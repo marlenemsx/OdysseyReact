@@ -9,9 +9,22 @@ class SignUp extends Component {
       password: "",
       confirmpassword: ""
     };
-    //this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    // elements bindés
+    this.updateprenomField = this.updateprenomField.bind(this);
+    this.updateNameField = this.updateNameField.bind(this);
+    this.updateEmailField = this.updateEmailField.bind(this);
+    this.updatePasswordField = this.updatePasswordField.bind(this);
+    this.updateconfirmpasswordField = this.updateconfirmpasswordField.bind(
+      this
+    );
   }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    console.log(this.state);
+  }
+
   updateprenomField(event) {
     let prenom = event.target.value;
     this.setState({ prenom: event.target.value });
@@ -34,33 +47,21 @@ class SignUp extends Component {
     this.setState({ confirmpassword: event.target.value });
   }
 
-  //   handleChange et handleSubmit
-  //   handleChange(event) {
-  //     this.setState({ value: event.target.value });
-  //   }
-
-  handleSubmit(event) {
-    alert("A name was submitted: " + this.state.value);
-    event.preventDefault();
-  }
-
   render() {
     return (
       <div>
+        <h3>
+          Vos données sont:
+          <pre>{JSON.stringify(this.state, 1, 1)}</pre>
+        </h3>
         <form onSubmit={this.handleSubmit}>
-          <h3>
-            Vos données sont:
-            <pre> {JSON.stringify(this.state)}</pre>
-          </h3>
-
           {/* prenom */}
           <input
             value={this.state.prenom}
-            //onChange={this.handleChange}
+            onChange={this.updateprenomField}
             type="nom"
             name="prenom"
             placeholder="Enter your surname"
-            onChange={this.updateprenomField.bind(this)}
           />
           {/* nom */}
           <input
@@ -68,8 +69,7 @@ class SignUp extends Component {
             type="nom"
             name="nom"
             placeholder="Enter your name"
-            //onChange={this.handleChange}
-            onChange={this.updateNameField.bind(this)}
+            onChange={this.updateNameField}
           />
           {/* email */}
           <input
@@ -77,8 +77,7 @@ class SignUp extends Component {
             type="email"
             name="email"
             placeholder="Enter your email"
-            //onChange={this.handleChange}
-            onChange={this.updateEmailField.bind(this)}
+            onChange={this.updateEmailField}
           />
           {/* password */}
           <input
@@ -86,8 +85,7 @@ class SignUp extends Component {
             type="password"
             name="password"
             placeholder="Password:"
-            onChange={this.updatePasswordField.bind(this)}
-            //onChange={this.handleChange}
+            onChange={this.updatePasswordField}
           />
           {/* confirm password */}
           <input
@@ -95,13 +93,12 @@ class SignUp extends Component {
             type="password"
             name="confirmpassword"
             placeholder="Confirm password:"
-            //onChange={this.handleChange}
-            onChange={this.updateconfirmpasswordField.bind(this)}
+            onChange={this.updateconfirmpasswordField}
           />
+          <button type="submit" value="Submit">
+            OK
+          </button>
         </form>
-        <button type="submit" value="Submit">
-          OK
-        </button>
       </div>
     );
   }
