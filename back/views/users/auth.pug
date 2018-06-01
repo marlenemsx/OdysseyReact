@@ -1,0 +1,18 @@
+//- Views - Users - AUTH.PUG
+extends layout
+
+block content
+        form
+            .form-group
+                label(for='nom') Name
+                input#nom.form-control(type='name', aria-describedby='name', placeholder='Enter your name')
+            .form-group
+                label(for='exampleInputEmail1') Email address
+                input#exampleInputEmail1.form-control(type='email', aria-describedby='emailHelp', placeholder='Enter email')
+            .form-group
+                label(for='exampleInputPassword1') Password
+                input#exampleInputPassword1.form-control(type='password', placeholder='Password')
+            .form-group.form-check
+                input#exampleCheck1.form-check-input(type='checkbox')
+            button.btn.btn-primary(type='submit') Submit
+
